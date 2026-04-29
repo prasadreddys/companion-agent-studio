@@ -1,26 +1,31 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { ChatAgent } from "@/components/ChatAgent";
+import { Toaster } from "@/components/ui/sonner";
 
 export const Route = createFileRoute("/")({
   component: Index,
+  head: () => ({
+    meta: [
+      { title: "Nova — AI Assistant" },
+      {
+        name: "description",
+        content:
+          "Chat with Nova, a fast AI assistant for answers, ideas, code, and more.",
+      },
+      { property: "og:title", content: "Nova — AI Assistant" },
+      {
+        property: "og:description",
+        content: "Fast, helpful AI agent powered by Lovable AI.",
+      },
+    ],
+  }),
 });
 
-// IMPORTANT: Replace this placeholder. For sites with multiple pages (About, Services, Contact, etc.),
-// create separate route files (about.tsx, services.tsx, contact.tsx) — don't put all pages in this file.
-function PlaceholderIndex() {
-  return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
-  );
-}
-
 function Index() {
-  return <PlaceholderIndex />;
+  return (
+    <>
+      <ChatAgent />
+      <Toaster />
+    </>
+  );
 }
